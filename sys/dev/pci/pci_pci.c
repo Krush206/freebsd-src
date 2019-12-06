@@ -1336,7 +1336,7 @@ pcib_alloc_pcie_irq(struct pcib_softc *sc)
 		rid = 0;
 
 	sc->pcie_irq = bus_alloc_resource_any(dev, SYS_RES_IRQ, &rid,
-	    RF_ACTIVE);
+	    RF_SHAREABLE | RF_ACTIVE);
 	if (sc->pcie_irq == NULL) {
 		device_printf(dev,
 		    "Failed to allocate interrupt for PCI-e events\n");
